@@ -22,16 +22,8 @@ class Game {
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+
   
-  // Add new user on temp array
-  // room.push(socket);
-  // if(room.length >= 2){
-  //   let id = uuid.v4();
-  //   let game = Game(id, room[0], room[1]);
-  //   room.shift();
-  //   room.shift();
-  //   games.set(id, game);
-  // }
 
   socket.on('disconnect', () => {
     console.log('user disconnected');
@@ -45,10 +37,11 @@ io.on('connection', (socket) => {
     }
     socket.broadcast.emit('updatePaddle', data);
   });
-  
+
 });
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 http.listen(port, () => {
-  console.log(`Listening on *:${port}`);
+  console.log(`listening on *:${port}`);
 });
+
