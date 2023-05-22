@@ -1,3 +1,5 @@
+import { Game } from './game'
+
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
@@ -10,31 +12,27 @@ app.use(express.static('public'));
 app.use(cors)
 
 const games = new Map();
+const players = new Map();
 const room = [];
-
-class Game {
-  constructor(id, playerOne, playerTwo) {
-      this.id = id;
-      this.playerOne = playerOne;
-      this.playerTwo = playerTwo;
-  }
-}
 
 io.on('connection', (socket) => {
   console.log('a user connected');
 
-  
+  let userId = uuid.v4()
+  players.set(userId, socket)
+  room.push(userId)
+
+  if(room.length == 2) {
+    let gameId = uuid.v4()
+    let game = Game(gameId, room.shift(), room.shift())
+    games.set(gameId, game)
+  }
 
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 
   socket.on('updatePaddle', (data) => {
-    if (data.player === 'left') {
-      leftPaddleY = data.y;
-    } else if (data.player === 'right') {
-      rightPaddleY = data.y;
-    }
     socket.broadcast.emit('updatePaddle', data);
   });
 
