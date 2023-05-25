@@ -8,4 +8,4 @@
     node install uuid
 2. Rode o servidor no terminal, indo até a pasta do jogo e utilizando:
     node src/server.js
-3. Abrindo um navegador Web, vá para esse [link](127.0.0.1:3000), e espere mais alguém conectar para jogar! (Ou abre outro navegador e tente jogar contra você mesmo.)
+3. Abrindo um navegador Web, vá para 127.0.0.1:3000, e espere mais alguém conectar para jogar! (Ou abre outro navegador e tente jogar contra você mesmo.)
