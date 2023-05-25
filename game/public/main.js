@@ -1,6 +1,6 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const socket = io("ws://172.21.250.177:3000");
+const socket = io("ws://127.0.0.1:3000");
 const scoreText = document.querySelector("#scoreText");
 const warnings = document.querySelector("#warnings");
 
